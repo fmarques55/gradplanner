@@ -55,7 +55,7 @@
 	}
 
 	#login #remember_me_holder {
-		padding-left: 120px;
+		padding-left: 25px;
 	}
 
 	#login #submit {
@@ -93,7 +93,7 @@
 			<div class='login_message'>${flash.message}</div>
 		</g:if>
 
-		<form action='${postUrl}' method='POST' id='loginForm' class='cssform' autocomplete='off'>
+		<form action='${postUrl}' method='POST' id='loginForm' class='cssform' autocomplete='on'>
 			<p>
 				<label for='username'><g:message code="springSecurity.login.username.label"/>:</label>
 				<input type='text' class='text_' name='j_username' id='username'/>
@@ -112,6 +112,8 @@
 			<p>
 				<input type='submit' id="submit" value='${message(code: "springSecurity.login.button")}'/>
 			</p>
+			<g:link controller="user" action="create">Cadastrar</g:link>
+
 		</form>
 	</div>
 </div>

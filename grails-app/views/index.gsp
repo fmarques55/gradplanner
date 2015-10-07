@@ -41,7 +41,7 @@
 			}
 
 			#page-body {
-				margin: 2em 1em 1.25em 18em;
+				padding: 30px;
 			}
 
 			h2 {
@@ -78,44 +78,149 @@
 					margin-top: 0;
 				}
 			}
+
+			#login {
+				margin: 15px 0px;
+				padding: 0px;
+				text-align: center;
+			}
+
+			#login .inner {
+				width: 340px;
+				padding-bottom: 6px;
+				margin: 60px auto;
+				text-align: left;
+				border: 1px solid #aab;
+				background-color: #f0f0fa;
+				-moz-box-shadow: 2px 2px 2px #eee;
+				-webkit-box-shadow: 2px 2px 2px #eee;
+				-khtml-box-shadow: 2px 2px 2px #eee;
+				box-shadow: 2px 2px 2px #eee;
+			}
+
+			#login .inner .fheader {
+				padding: 18px 26px 14px 26px;
+				background-color: #f7f7ff;
+				margin: 0px 0 14px 0;
+				color: #2e3741;
+				font-size: 18px;
+				font-weight: bold;
+			}
+
+			#login .inner .cssform p {
+				clear: left;
+				margin: 0;
+				padding: 4px 0 3px 0;
+				padding-left: 105px;
+				margin-bottom: 20px;
+				height: 1%;
+			}
+
+			#login .inner .cssform input[type='text'] {
+				width: 120px;
+			}
+
+			#login .inner .cssform label {
+				font-weight: bold;
+				float: left;
+				text-align: right;
+				margin-left: -105px;
+				width: 110px;
+				padding-top: 3px;
+				padding-right: 10px;
+			}
+
+			#login #remember_me_holder {
+				padding-left: 120px;
+			}
+
+			#login #submit {
+				margin-left: 15px;
+			}
+
+			#login #remember_me_holder label {
+				float: none;
+				margin-left: 0;
+				text-align: left;
+				width: 200px
+			}
+
+			#login .inner .login_message {
+				padding: 6px 25px 20px 25px;
+				color: #c33;
+			}
+
+			#login .inner .text_ {
+				width: 120px;
+			}
+
+			#login .inner .chk {
+				height: 12px;
+			}
 		</style>
+		<script type='text/javascript'>
+	<!--
+	(function() {
+		document.forms['loginForm'].elements['j_username'].focus();
+	})();
+	// -->
+</script>
 	</head>
 	<body>
 		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div id="status" role="complementary">
-			<h1>Application Status</h1>
-			<ul>
-				<li>App version: <g:meta name="app.version"/></li>
-				<li>Grails version: <g:meta name="app.grails.version"/></li>
-				<li>Groovy version: ${GroovySystem.getVersion()}</li>
-				<li>JVM version: ${System.getProperty('java.version')}</li>
-				<li>Reloading active: ${grails.util.Environment.reloadingAgentEnabled}</li>
-				<li>Controllers: ${grailsApplication.controllerClasses.size()}</li>
-				<li>Domains: ${grailsApplication.domainClasses.size()}</li>
-				<li>Services: ${grailsApplication.serviceClasses.size()}</li>
-				<li>Tag Libraries: ${grailsApplication.tagLibClasses.size()}</li>
-			</ul>
-			<h1>Installed Plugins</h1>
-			<ul>
-				<g:each var="plugin" in="${applicationContext.getBean('pluginManager').allPlugins}">
-					<li>${plugin.name} - ${plugin.version}</li>
-				</g:each>
-			</ul>
-		</div>
 		<div id="page-body" role="main">
-			<h1>Welcome to Grails</h1>
+			<h1>Bem vindo ao GradPlanner</h1>
 			<p>Congratulations, you have successfully started your first Grails application! At the moment
 			   this is the default page, feel free to modify it to either redirect to a controller or display whatever
 			   content you may choose. Below is a list of controllers that are currently deployed in this application,
 			   click on each to execute its default action:</p>
 
-			<div id="controller-list" role="navigation">
+			   <sec:ifLoggedIn>
+					Olá, ${sec.loggedInUserInfo(field:'username')} deseja <g:link controller="transcriptOfRecords" action="create">registrar seu histórico?</g:link>
+					</sec:ifLoggedIn>
+					<sec:ifNotLoggedIn>
+						<!-- <div id='login'>
+							<div class='inner'>
+								<div class='fheader'><g:message code="springSecurity.login.header"/>
+								</div>
+
+										<g:if test='${flash.message}'>
+											<div class='login_message'>${flash.message}</div>
+										</g:if>
+
+										<form action='${postUrl}' method='POST' id='loginForm' class='cssform' autocomplete='off'>
+										<p>
+											<label for='username'><g:message code="springSecurity.login.username.label"/>:</label>
+											<input type='text' class='text_' name='j_username' id='username'/>
+										</p>
+
+										<p>
+											<label for='password'><g:message code="springSecurity.login.password.label"/>:</label>
+											<input type='password' class='text_' name='j_password' id='password'/>
+										</p>
+
+										<p id="remember_me_holder">
+											<input type='checkbox' class='chk' name='${rememberMeParameter}' id='remember_me' <g:if test='${hasCookie}'>checked='checked'</g:if>/>
+											<label for='remember_me'><g:message code="springSecurity.login.remember.me.label"/></label>
+										</p>
+
+										<p>
+											<input type='submit' id="submit" value='${message(code: "springSecurity.login.button")}' />
+										</p>
+										<g:link controller="user" action="create">Cadastrar</g:link>
+
+										</form>
+							</div>
+						</div> -->
+				</sec:ifNotLoggedIn>
+
+			<!--<div id="controller-list" role="navigation">
 				<h2>Available Controllers:</h2>
 				<ul>
 					<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
 						<li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
 					</g:each>
-				</ul>
+				</ul><!-->
 			</div>
 		</div>
 	</body>

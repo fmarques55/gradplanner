@@ -11,8 +11,8 @@ h1, h2, h3, h4, h5, h6 {
 /* BASE LAYOUT */
 
 html {
-	background-color: #ddd;
-	background-image: -moz-linear-gradient(center top, #aaa, #ddd);
+	background-color: #353131;
+	//background-image: -moz-linear-gradient(center top, #aaa, #ddd);
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #aaa), color-stop(1, #ddd));
 	background-image: linear-gradient(top, #aaa, #ddd);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#aaaaaa', EndColorStr = '#dddddd');
@@ -37,18 +37,31 @@ html * {
 }
 
 body {
-	background: #ffffff;
+	background: #CBCBCB;
 	color: #333333;
 	margin: 0 auto;
-	max-width: 960px;
 	overflow-x: hidden; /* prevents box-shadow causing a horizontal scrollbar in firefox when viewport < 960px wide */
-	   -moz-box-shadow: 0 0 0.3em #255b17;
-	-webkit-box-shadow: 0 0 0.3em #255b17;
-	        box-shadow: 0 0 0.3em #255b17;
+	   -moz-box-shadow: 0 0 0.3em #FFAD06;
+	-webkit-box-shadow: 0 0 0.3em #FFAD06;
+	        box-shadow: 0 0 0.3em #FFAD06;
 }
 
-#grailsLogo {
-	background-color: #abbf78;
+#gradPlanner_logo {
+	background-color: #242423;
+}
+
+.nav-panel {
+	background-color: #242423;
+	width: 100%;
+	color: #fff;
+
+}
+
+.nav-element {
+	width: 20%;
+	background-color: #242423;
+	float: left;
+	
 }
 
 /* replace with .no-boxshadow body if you have modernizr available */
@@ -65,7 +78,7 @@ body {
 }
 
 a:link, a:visited, a:hover {
-	color: #48802c;
+	color: #CE6E3A;
 }
 
 a:hover, a:active {
@@ -73,10 +86,11 @@ a:hover, a:active {
 }
 
 h1 {
-	color: #48802c;
+	color: #000;
 	font-weight: normal;
 	font-size: 1.25em;
 	margin: 0.8em 0 0.3em 0;
+	font-weight: bold
 }
 
 ul {
@@ -108,8 +122,8 @@ img {
 }
 
 .footer {
-	background: #abbf78;
-	color: #000;
+	background: #F28812;
+	color: #fff;
 	clear: both;
 	font-size: 0.8em;
 	margin-top: 1.5em;
@@ -335,9 +349,9 @@ fieldset.embedded legend {
 }
 
 .message {
-	background: #f3f3ff;
+	background: #fff;
 	border: 1px solid #b2d1ff;
-	color: #006dba;
+	color: #000;
 	   -moz-box-shadow: 0 0 0.25em #b2d1ff;
 	-webkit-box-shadow: 0 0 0.25em #b2d1ff;
 	        box-shadow: 0 0 0.25em #b2d1ff;

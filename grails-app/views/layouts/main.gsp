@@ -7,7 +7,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title><g:layoutTitle default="Grails"/></title>
+		<title>GradPlanner</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="shortcut icon" href="${resource(dir: 'images', file: 'favicon.ico')}" type="image/x-icon">
 		<link rel="apple-touch-icon" href="${resource(dir: 'images', file: 'apple-touch-icon.png')}">
@@ -18,9 +18,32 @@
 		<r:layoutResources />
 	</head>
 	<body>
-		<div id="grailsLogo" role="banner"><a href="http://grails.org"><img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/></a></div>
+		<div id="gradPlanner_logo" href="index" role="banner"><center><img src="${resource(dir: 'images', file: 'gradplanner.png')}" alt="GradPlanner"/></center>
+		</div>
+		<div class="nav-panel">
+					
+					<sec:ifLoggedIn>
+						<div class="nav-element"><g:link controller="user" action="edit">Meu perfil</g:link></div>
+					</sec:ifLoggedIn>
+					<sec:ifNotLoggedIn>
+						<div class="nav-element"><g:link controller="user" action="create">Cadastre-se</g:link></div>	
+					</sec:ifNotLoggedIn>
+					<div class="nav-element"><g:link>Calculo de IRA</g:link></div>
+					<div class="nav-element"><g:link>Visualizar Disciplinas</g:link></div>
+					<div class="nav-element"><a href="url">Gerar Grade Horária</a></div>
+					<sec:ifLoggedIn>
+					Olá, ${sec.loggedInUserInfo(field:'username')} <g:link controller="logout" action="index">Sair</g:link>
+					</sec:ifLoggedIn>
+					<sec:ifNotLoggedIn>
+					Você não está logado! <g:link controller="login" action="index">Entrar</g:link>
+				</sec:ifNotLoggedIn>
+		</div>
+	
+		</table>
 		<g:layoutBody/>
-		<div class="footer" role="contentinfo"></div>
+		<div class="footer" role="contentinfo">
+			<center>GradPlanner 2015.</center>
+		</div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 		<g:javascript library="application"/>
 		<r:layoutResources />
